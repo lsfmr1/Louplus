@@ -1,0 +1,31 @@
+shiyanlou:~/ $ cat /etc/group |grep -E "sudo"                        [18:24:12]
+	sudo:x:27:shiyanlou,labex
+shiyanlou:~/ $ sudo adduser loutest                                  [18:24:21]
+	正在添加用户"loutest"...
+	正在添加新组"loutest" (1000)...
+	正在添加新用户"loutest" (1000) 到组"loutest"...
+	创建主目录"/home/loutest"...
+	正在从"/etc/skel"复制文件...
+	输入新的 UNIX 密码： 
+	重新输入新的 UNIX 密码： 
+	passwd：已成功更新密码
+	正在改变 loutest 的用户信息
+	请输入新值，或直接敲回车键以使用默认值
+		全名 []: 
+		房间号码 []: 
+		工作电话 []: 
+		家庭电话 []: 
+		其它 []: 
+	这些信息是否正确？ [Y/n] 
+shiyanlou:~/ $ sudo usermod -G sudo loutest                          [18:24:53]
+shiyanlou:~/ $ su -l loutest                                         [18:26:14]
+	密码： 
+	To run a command as administrator (user "root"), use "sudo <command>".
+	See "man sudo_root" for details.
+loutest@4387b3f782f7:~$ cd /opt/
+loutest@4387b3f782f7:/opt$ sudo touch forloutest
+	[sudo] loutest 的密码： 
+loutest@4387b3f782f7:/opt$ sudo chmod +rw forloutest
+loutest@4387b3f782f7:/opt$ ls -alh forloutest
+	-rw-r--r-- 1 root root 0 2月  10 18:26 forloutest
+
